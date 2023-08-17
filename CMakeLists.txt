@@ -15,6 +15,7 @@ add_executable(
   order.cpp
   orderbook.cpp
   stock.cpp
+  investor.cpp
 )
 
 target_link_libraries(exchange -lpthread)

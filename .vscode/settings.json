@@ -39,6 +39,12 @@
     "sstream": "cpp",
     "stdexcept": "cpp",
     "typeinfo": "cpp",
-    "fstream": "cpp"
+    "fstream": "cpp",
+    "cctype": "cpp",
+    "cstring": "cpp",
+    "string_view": "cpp",
+    "cinttypes": "cpp",
+    "clocale": "cpp",
+    "numbers": "cpp"
   }
 }
