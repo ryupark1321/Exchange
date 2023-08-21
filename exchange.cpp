@@ -5,7 +5,7 @@
 Exchange Exchange::exchange;
 
 Exchange::Exchange() {
-  
+    
 }
 
 Exchange& Exchange::getInstance() {

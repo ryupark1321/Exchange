@@ -1,6 +1,6 @@
 #include "order.hpp"
 
-Order::Order(float p, float q, bool os, std::shared_ptr<Stock> st) {
+Order::Order(float p, float q, int os, std::shared_ptr<Stock> st) {
   price_ = p;
   quantity_ = q;
   side_ = Order::toOrderSide(os);
