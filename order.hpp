@@ -1,6 +1,7 @@
 #include <memory>
 #include <time.h>
 #include "stock.hpp"
+#pragma once
 
 class Order {
   public:
@@ -19,15 +20,18 @@ class Order {
 
     std::string to_string();
 
-    time_t& order_placed_time = time(0);    
+    time_t& order_placed_time = order_placed_time_;    
     float& price = price_;
     float& quantity = quantity_;
+    float& original_quantity = original_quantity_;
     OrderSide& side = side_;
     std::shared_ptr<Stock> stock = stock_;
 
   private:
     float price_;
     float quantity_;
+    float original_quantity_;
     OrderSide side_;
     std::shared_ptr<Stock> stock_;
+    time_t order_placed_time_ = time(0);    
 };

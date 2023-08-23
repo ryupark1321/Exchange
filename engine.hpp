@@ -1,6 +1,7 @@
 #include <memory>
 #include <vector>
-#include "order.hpp"
+#include "aggregateorder.hpp"
+#pragma once
 
 // Matching Algorithm
 // Every participant gets the best possible execution at the fairest price
@@ -42,6 +43,32 @@
 
 class Engine {
   public:
-    virtual std::vector<std::shared_ptr<Order>> fifo() {return std::vector<std::shared_ptr<Order>>();}
-    virtual std::vector<std::shared_ptr<Order>> match() {return std::vector<std::shared_ptr<Order>>();}
-}
+    virtual void fifo(std::array<std::shared_ptr<AggregateOrder>, 2> &aggregateOrders) {
+      auto& buyOrders = aggregateOrders[0];
+      auto& sellOrders = aggregateOrders[1];
+      auto buyItr = buyOrders->orders.rbegin();
+      auto sellItr = sellOrders->orders.rbegin();
+      while (sellOrders->current_order_quantity > 0 && buyOrders->current_order_quantity > 0 && sellItr != sellOrders->orders.rend() && buyItr != buyOrders->orders.rend()) {
+        if ((*buyItr)->quantity > (*sellItr)->quantity) {
+          sellOrders->current_order_quantity -= (*sellItr)->quantity;
+          buyOrders->current_order_quantity -= (*sellItr)->quantity;
+          (*buyItr)->quantity -= (*sellItr)->quantity;
+          (*sellItr)->quantity = 0;
+          sellItr++;
+          sellOrders->orders.pop_back();
+        } else {
+          buyOrders->current_order_quantity -= (*buyItr)->quantity;
+          sellOrders->current_order_quantity -= (*buyItr)->quantity;
+          (*sellItr)->quantity -= (*buyItr)->quantity;
+          (*buyItr)->quantity = 0;
+          buyItr++;
+          buyOrders->orders.pop_back();
+        }
+        if ((*sellItr)->quantity == 0){
+          sellItr++;
+          sellOrders->orders.pop_back();
+        }
+      }
+    }
+    virtual void match(std::array<std::shared_ptr<AggregateOrder>, 2> &aggregateOrders) {}
+};

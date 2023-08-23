@@ -1,31 +1,33 @@
 #include <memory>
+#include <stdexcept>
 #include "order.hpp"
 #include "investor.hpp"
 
-Investor::Investor(std::string name, std::vector<std::array<int, 2>> priceAndShare) {
-  name_ = name;
-}
+// Investor(std::string name, std::shared_ptr<Stock> targetStock, int shares, int pricePerShare) {
+//   name_ = name;
 
-std::shared_ptr<Order> Investor::bid(std::shared_ptr<Stock> targetStock, int shares, int pricePerShare) {
-  std::shared_ptr<Order> order = std::make_shared<Order>(priceperShare, shares, 0, target);
+// }
+
+std::shared_ptr<Order>& Investor::bid(std::shared_ptr<Stock> targetStock, int shares, float pricePerShare) {
+  std::shared_ptr<Order> order = std::make_shared<Order>(pricePerShare, shares, 0, targetStock);
   activeOrders.emplace_back(order);
-  return activeOrders;
+  return activeOrders.back();
 }
 
-void purchasedStock(std::shared_ptr<Order> fill, int quantity) {
-  if (stockMap_.find(fill.stock) == stockMap_.end()) {
-    stockMap_[fill.stock] = 0;
+void Investor::purchasedStock(std::shared_ptr<Order> fill) {
+  if (stockMap.find(fill->stock) == stockMap.end()) {
+    stockMap[fill->stock] = 0;
   }
-  stockMap_[fill.stock] += fill.quantity;
+  stockMap[fill->stock] += (fill->original_quantity - fill->quantity);
 }
 
-std::shared_ptr<Order> Investor::ask(std::shared_ptr<Stock> targetStock, int shares, int askPrice) {
-  return std::make_shared<Order>(priceperShare, shares, 1, target);
+std::shared_ptr<Order> Investor::ask(std::shared_ptr<Stock> targetStock, int shares, float askPrice) {
+  return std::make_shared<Order>(askPrice, shares, 1, targetStock);
 }
 
-void soldStock(std::shared_ptr<Order> fill) {
-  if (stockMap_.find(fill.stock) == stockMap_.end() || stockMap_[fill.stock] < fill.quantity) {
-    throw new error("No stock to be sold: concurrency error suspected.")
+void Investor::soldStock(std::shared_ptr<Order> fill) {
+  if (stockMap.find(fill->stock) == stockMap.end() || stockMap[fill->stock] < fill->original_quantity) {
+    throw std::invalid_argument("No stock to be sold: concurrency error suspected.");
   } 
-  stockMap_[fill.stock] -= fill.quantity;
+  stockMap[fill->stock] -= (fill->original_quantity - fill->quantity);
 }

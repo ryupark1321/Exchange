@@ -11,11 +11,12 @@ add_executable(
   exchange
   exchange.cpp
   main.cpp
-  engine.cpp
   order.cpp
   orderbook.cpp
   stock.cpp
-  investor.cpp
+  fifo.cpp
+  aggregateorder.cpp
+  prorata.cpp
 )
 
 target_link_libraries(exchange -lpthread)
