@@ -547,6 +547,30 @@ aggregateorder.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/aggregateorder.cpp.s
 .PHONY : aggregateorder.cpp.s
 
+engine.o: engine.cpp.o
+.PHONY : engine.o
+
+# target to build an object file
+engine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/engine.cpp.o
+.PHONY : engine.cpp.o
+
+engine.i: engine.cpp.i
+.PHONY : engine.i
+
+# target to preprocess a source file
+engine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/engine.cpp.i
+.PHONY : engine.cpp.i
+
+engine.s: engine.cpp.s
+.PHONY : engine.s
+
+# target to generate assembly for a file
+engine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/engine.cpp.s
+.PHONY : engine.cpp.s
+
 exchange.o: exchange.cpp.o
 .PHONY : exchange.o
 
@@ -570,30 +594,6 @@ exchange.s: exchange.cpp.s
 exchange.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/exchange.cpp.s
 .PHONY : exchange.cpp.s
-
-fifo.o: fifo.cpp.o
-.PHONY : fifo.o
-
-# target to build an object file
-fifo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/fifo.cpp.o
-.PHONY : fifo.cpp.o
-
-fifo.i: fifo.cpp.i
-.PHONY : fifo.i
-
-# target to preprocess a source file
-fifo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/fifo.cpp.i
-.PHONY : fifo.cpp.i
-
-fifo.s: fifo.cpp.s
-.PHONY : fifo.s
-
-# target to generate assembly for a file
-fifo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/fifo.cpp.s
-.PHONY : fifo.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -667,30 +667,6 @@ orderbook.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/orderbook.cpp.s
 .PHONY : orderbook.cpp.s
 
-prorata.o: prorata.cpp.o
-.PHONY : prorata.o
-
-# target to build an object file
-prorata.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/prorata.cpp.o
-.PHONY : prorata.cpp.o
-
-prorata.i: prorata.cpp.i
-.PHONY : prorata.i
-
-# target to preprocess a source file
-prorata.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/prorata.cpp.i
-.PHONY : prorata.cpp.i
-
-prorata.s: prorata.cpp.s
-.PHONY : prorata.s
-
-# target to generate assembly for a file
-prorata.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/prorata.cpp.s
-.PHONY : prorata.cpp.s
-
 stock.o: stock.cpp.o
 .PHONY : stock.o
 
@@ -758,12 +734,12 @@ help:
 	@echo "... aggregateorder.o"
 	@echo "... aggregateorder.i"
 	@echo "... aggregateorder.s"
+	@echo "... engine.o"
+	@echo "... engine.i"
+	@echo "... engine.s"
 	@echo "... exchange.o"
 	@echo "... exchange.i"
 	@echo "... exchange.s"
-	@echo "... fifo.o"
-	@echo "... fifo.i"
-	@echo "... fifo.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -773,9 +749,6 @@ help:
 	@echo "... orderbook.o"
 	@echo "... orderbook.i"
 	@echo "... orderbook.s"
-	@echo "... prorata.o"
-	@echo "... prorata.i"
-	@echo "... prorata.s"
 	@echo "... stock.o"
 	@echo "... stock.i"
 	@echo "... stock.s"

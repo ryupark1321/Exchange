@@ -1,19 +1,41 @@
 #include "exchange.hpp"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
-#include <string.h>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <netdb.h>
-#include <netinet/in.h>
-#include <errno.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <unistd.h>
+// #include <errno.h>
+// #include <string.h>
+// #include <sys/socket.h>
+// #include <sys/types.h>
+// #include <netdb.h>
+// #include <netinet/in.h>
+// #include <errno.h>
+#include <fstream>
 #include <iostream>
 
 // Should support test mode or just regular functioning mode 
 int main(int argc, char* argv[]) {
   Exchange& exchange = Exchange::getInstance();
+  std::string input;
+  std::ifstream stocks;
+  if (argc == 3) {
+    stocks.open(argv[1]);
+    if (stocks.is_open()) {
+      while (std::getline(stocks, input)) { 
+        exchange.processOrderBookAndStockCreationMessage(input);
+      }
+    }
+    stocks.close();
+    std::ifstream orders;
+    orders.open(argv[2]);
+    if (orders.is_open()) {
+      while (std::getline(orders, input)) { 
+        exchange.processOrderMessage(input);
+        std::cout << exchange.to_string() << std::endl;
+        std::cout << "=============================================================" << std::endl;
+      }
+    }
+  }
+  
   
   // Initialize Things 
   // if (argc == 1) {

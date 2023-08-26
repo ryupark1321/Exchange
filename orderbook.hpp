@@ -1,5 +1,5 @@
-#include "engine.hpp"
 #include "aggregateorder.hpp"
+#include "engine.hpp"
 #include <algorithm>
 #include <memory>
 #include <vector>
@@ -10,16 +10,18 @@ class OrderBook {
     OrderBook(std::shared_ptr<Stock> st, std::shared_ptr<Engine> eg);
 
     // Invariant: Orders are for the same stock
-    void addOrders(const std::string& msg);
+    void addOrder(const std::string& msg);
 
-    void match();
+    void match(std::shared_ptr<Order>& order);
+
+    std::string to_string();
 
   private:
     void addToBook(std::map<float, std::shared_ptr<AggregateOrder>>& map, std::vector<std::shared_ptr<AggregateOrder>>& book, std::shared_ptr<Order>& order);
 
-    void parseOrderString(std::vector<std::shared_ptr<Order>>& orders, const std::string& ordersString);
+    void matchHelper(std::shared_ptr<Order>& order, std::vector<std::shared_ptr<AggregateOrder>>& book);
 
-    void parseOrderLine(std::array<std::string, 4>& output, const std::string& orderLine);
+    void parseOrderString(std::array<std::string, 4>& output, const std::string& orderString);
 
     class PriceCompare {
       public:

@@ -139,24 +139,10 @@ CMakeFiles/exchange.dir/stock.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/exchange.dir/stock.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ryupark1321/Desktop/Exchange/stock.cpp -o CMakeFiles/exchange.dir/stock.cpp.s
 
-CMakeFiles/exchange.dir/fifo.cpp.o: CMakeFiles/exchange.dir/flags.make
-CMakeFiles/exchange.dir/fifo.cpp.o: fifo.cpp
-CMakeFiles/exchange.dir/fifo.cpp.o: CMakeFiles/exchange.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ryupark1321/Desktop/Exchange/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/exchange.dir/fifo.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exchange.dir/fifo.cpp.o -MF CMakeFiles/exchange.dir/fifo.cpp.o.d -o CMakeFiles/exchange.dir/fifo.cpp.o -c /home/ryupark1321/Desktop/Exchange/fifo.cpp
-
-CMakeFiles/exchange.dir/fifo.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/exchange.dir/fifo.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ryupark1321/Desktop/Exchange/fifo.cpp > CMakeFiles/exchange.dir/fifo.cpp.i
-
-CMakeFiles/exchange.dir/fifo.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/exchange.dir/fifo.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ryupark1321/Desktop/Exchange/fifo.cpp -o CMakeFiles/exchange.dir/fifo.cpp.s
-
 CMakeFiles/exchange.dir/aggregateorder.cpp.o: CMakeFiles/exchange.dir/flags.make
 CMakeFiles/exchange.dir/aggregateorder.cpp.o: aggregateorder.cpp
 CMakeFiles/exchange.dir/aggregateorder.cpp.o: CMakeFiles/exchange.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ryupark1321/Desktop/Exchange/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/exchange.dir/aggregateorder.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ryupark1321/Desktop/Exchange/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/exchange.dir/aggregateorder.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exchange.dir/aggregateorder.cpp.o -MF CMakeFiles/exchange.dir/aggregateorder.cpp.o.d -o CMakeFiles/exchange.dir/aggregateorder.cpp.o -c /home/ryupark1321/Desktop/Exchange/aggregateorder.cpp
 
 CMakeFiles/exchange.dir/aggregateorder.cpp.i: cmake_force
@@ -167,19 +153,19 @@ CMakeFiles/exchange.dir/aggregateorder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/exchange.dir/aggregateorder.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ryupark1321/Desktop/Exchange/aggregateorder.cpp -o CMakeFiles/exchange.dir/aggregateorder.cpp.s
 
-CMakeFiles/exchange.dir/prorata.cpp.o: CMakeFiles/exchange.dir/flags.make
-CMakeFiles/exchange.dir/prorata.cpp.o: prorata.cpp
-CMakeFiles/exchange.dir/prorata.cpp.o: CMakeFiles/exchange.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ryupark1321/Desktop/Exchange/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/exchange.dir/prorata.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exchange.dir/prorata.cpp.o -MF CMakeFiles/exchange.dir/prorata.cpp.o.d -o CMakeFiles/exchange.dir/prorata.cpp.o -c /home/ryupark1321/Desktop/Exchange/prorata.cpp
+CMakeFiles/exchange.dir/engine.cpp.o: CMakeFiles/exchange.dir/flags.make
+CMakeFiles/exchange.dir/engine.cpp.o: engine.cpp
+CMakeFiles/exchange.dir/engine.cpp.o: CMakeFiles/exchange.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ryupark1321/Desktop/Exchange/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/exchange.dir/engine.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exchange.dir/engine.cpp.o -MF CMakeFiles/exchange.dir/engine.cpp.o.d -o CMakeFiles/exchange.dir/engine.cpp.o -c /home/ryupark1321/Desktop/Exchange/engine.cpp
 
-CMakeFiles/exchange.dir/prorata.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/exchange.dir/prorata.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ryupark1321/Desktop/Exchange/prorata.cpp > CMakeFiles/exchange.dir/prorata.cpp.i
+CMakeFiles/exchange.dir/engine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/exchange.dir/engine.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ryupark1321/Desktop/Exchange/engine.cpp > CMakeFiles/exchange.dir/engine.cpp.i
 
-CMakeFiles/exchange.dir/prorata.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/exchange.dir/prorata.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ryupark1321/Desktop/Exchange/prorata.cpp -o CMakeFiles/exchange.dir/prorata.cpp.s
+CMakeFiles/exchange.dir/engine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/exchange.dir/engine.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ryupark1321/Desktop/Exchange/engine.cpp -o CMakeFiles/exchange.dir/engine.cpp.s
 
 # Object files for target exchange
 exchange_OBJECTS = \
@@ -188,9 +174,8 @@ exchange_OBJECTS = \
 "CMakeFiles/exchange.dir/order.cpp.o" \
 "CMakeFiles/exchange.dir/orderbook.cpp.o" \
 "CMakeFiles/exchange.dir/stock.cpp.o" \
-"CMakeFiles/exchange.dir/fifo.cpp.o" \
 "CMakeFiles/exchange.dir/aggregateorder.cpp.o" \
-"CMakeFiles/exchange.dir/prorata.cpp.o"
+"CMakeFiles/exchange.dir/engine.cpp.o"
 
 # External object files for target exchange
 exchange_EXTERNAL_OBJECTS =
@@ -200,12 +185,11 @@ exchange: CMakeFiles/exchange.dir/main.cpp.o
 exchange: CMakeFiles/exchange.dir/order.cpp.o
 exchange: CMakeFiles/exchange.dir/orderbook.cpp.o
 exchange: CMakeFiles/exchange.dir/stock.cpp.o
-exchange: CMakeFiles/exchange.dir/fifo.cpp.o
 exchange: CMakeFiles/exchange.dir/aggregateorder.cpp.o
-exchange: CMakeFiles/exchange.dir/prorata.cpp.o
+exchange: CMakeFiles/exchange.dir/engine.cpp.o
 exchange: CMakeFiles/exchange.dir/build.make
 exchange: CMakeFiles/exchange.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ryupark1321/Desktop/Exchange/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable exchange"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ryupark1321/Desktop/Exchange/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable exchange"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/exchange.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -45,6 +45,15 @@
     "string_view": "cpp",
     "cinttypes": "cpp",
     "clocale": "cpp",
-    "numbers": "cpp"
+    "numbers": "cpp",
+    "cstdarg": "cpp",
+    "chrono": "cpp",
+    "condition_variable": "cpp",
+    "source_location": "cpp",
+    "system_error": "cpp",
+    "mutex": "cpp",
+    "ratio": "cpp",
+    "streambuf": "cpp",
+    "thread": "cpp"
   }
 }

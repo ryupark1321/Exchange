@@ -1,5 +1,6 @@
 #include <memory>
 #include <vector>
+#include <iostream>
 #include "aggregateorder.hpp"
 #pragma once
 
@@ -30,7 +31,7 @@
 // When the aggressing order hits the order book, TOP receives the first allocation - to the maximum configured priority
 // Meet the minimum quantity "threshold" to receive allocation in the Pro Rata round
 // First one for the price level gets the TOP status
-// Top has min/max allocation lots
+// Top has min/max allocation lots  
 // Than fifo
 // (Top - Pro Rata - FIFO)
 
@@ -43,32 +44,12 @@
 
 class Engine {
   public:
-    virtual void fifo(std::array<std::shared_ptr<AggregateOrder>, 2> &aggregateOrders) {
-      auto& buyOrders = aggregateOrders[0];
-      auto& sellOrders = aggregateOrders[1];
-      auto buyItr = buyOrders->orders.rbegin();
-      auto sellItr = sellOrders->orders.rbegin();
-      while (sellOrders->current_order_quantity > 0 && buyOrders->current_order_quantity > 0 && sellItr != sellOrders->orders.rend() && buyItr != buyOrders->orders.rend()) {
-        if ((*buyItr)->quantity > (*sellItr)->quantity) {
-          sellOrders->current_order_quantity -= (*sellItr)->quantity;
-          buyOrders->current_order_quantity -= (*sellItr)->quantity;
-          (*buyItr)->quantity -= (*sellItr)->quantity;
-          (*sellItr)->quantity = 0;
-          sellItr++;
-          sellOrders->orders.pop_back();
-        } else {
-          buyOrders->current_order_quantity -= (*buyItr)->quantity;
-          sellOrders->current_order_quantity -= (*buyItr)->quantity;
-          (*sellItr)->quantity -= (*buyItr)->quantity;
-          (*buyItr)->quantity = 0;
-          buyItr++;
-          buyOrders->orders.pop_back();
-        }
-        if ((*sellItr)->quantity == 0){
-          sellItr++;
-          sellOrders->orders.pop_back();
-        }
-      }
-    }
-    virtual void match(std::array<std::shared_ptr<AggregateOrder>, 2> &aggregateOrders) {}
+    Engine(int algo_number): match_algo_number(algo_number){};
+    void fifo(std::shared_ptr<Order>& order, std::shared_ptr<AggregateOrder>& aggregateOrder);
+    void prorata(std::shared_ptr<Order>& order, std::shared_ptr<AggregateOrder>& aggregateOrder);
+    void match(std::shared_ptr<Order>& order, std::shared_ptr<AggregateOrder>& aggregateOrder);
+    std::string MatchingAlgo();
+  private:
+    int match_algo_number;
+
 };

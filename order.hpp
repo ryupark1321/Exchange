@@ -10,11 +10,15 @@ class Order {
       Sell = 1
     };
 
-    static OrderSide toOrderSide(int order_side) {return order_side? OrderSide::Buy : OrderSide::Sell;};
+    static OrderSide toOrderSide(int order_side) {return order_side? OrderSide::Sell : OrderSide::Buy;};
 
     static std::string orderSideToString(OrderSide& os) {return static_cast<int>(os)? "Sell" : "Buy";};
 
-    Order(float p, float q, int os, std::shared_ptr<Stock> st);
+    Order(float p, float q, int os, std::shared_ptr<Stock>& st):
+      price_(p),
+      quantity_(q),
+      side_(Order::toOrderSide(os)),
+      stock_(st){};
 
     bool isExpired() {return difftime(order_placed_time, time(0)) >= 86400;};
 
@@ -25,8 +29,7 @@ class Order {
     float& quantity = quantity_;
     float& original_quantity = original_quantity_;
     OrderSide& side = side_;
-    std::shared_ptr<Stock> stock = stock_;
-
+    std::shared_ptr<Stock>& stock = stock_;
   private:
     float price_;
     float quantity_;

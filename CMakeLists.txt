@@ -5,7 +5,7 @@ include(CTest)
 enable_testing()
 
 set(CMAKE_CXX_STANDARD 20) 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a -Wall -Wpedantic -O3")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Wall -Wpedantic -g")
 
 add_executable(
   exchange
@@ -13,13 +13,12 @@ add_executable(
   main.cpp
   order.cpp
   orderbook.cpp
-  stock.cpp
-  fifo.cpp
+  stock.cpp 
   aggregateorder.cpp
-  prorata.cpp
+  engine.cpp
 )
 
-target_link_libraries(exchange -lpthread)
+target_link_libraries(exchange)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

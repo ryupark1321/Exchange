@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = 
 
-CXX_FLAGS =  -std=c++2a -Wall -Wpedantic -O3 -std=gnu++2a
+CXX_FLAGS =  -std=c++20 -Wall -Wpedantic -g -std=gnu++2a
 

@@ -15,63 +15,66 @@ void OrderBook::addToBook(std::map<float, std::shared_ptr<AggregateOrder>>& map,
   }
 }
 
-void OrderBook::addOrders(const std::string& msg) {
-  std::vector<std::shared_ptr<Order>> allOrders;
-  parseOrderString(allOrders, msg);
+void OrderBook::addOrder(const std::string& msg) {
+  std::array<std::string, 4> order_detail;
+  parseOrderString(order_detail, msg);
   // add Orders
-  for (auto& order : allOrders) {
+  std::shared_ptr<Order> order = std::make_shared<Order>(std::stof(order_detail[2]),std::stof(order_detail[3]),std::stoi(order_detail[1]),stock_);
+  match(order);
+  if (order->quantity > 0){
     if (order->side == 1) {
       addToBook(sellMap_, sell_, order);
     } else {
       addToBook(buyMap_, buy_, order);
-    }   
-  }
-  sort();
-}
-
-// assume data is sorted
-void OrderBook::match() {
-  auto buy_itr = buy_.begin();
-  auto buy_end = buy_.end();
-  auto sell_itr = sell_.rbegin();
-  auto sell_end = sell_.rend();
-  while (buy_itr != buy_end) {
-    while (sell_itr != sell_end) {
-      if ((*buy_itr)->price < (*sell_itr)->price) {
-        break;
-      }
-      std::array<std::shared_ptr<AggregateOrder>, 2> aggregateOrders{(*buy_itr), (*sell_itr)};
-      engine_->match(aggregateOrders);
-      if ((*buy_itr)->current_order_quantity == 0) {
-        buy_.erase(buy_itr++);
-      }
-      if ((*sell_itr)->current_order_quantity == 0) {
-        sell_.erase(std::next(sell_itr++).base());
-      } 
     }
-    if (sell_itr != sell_end) {
-      break;
-    }
+    sort();
+  }
+  stock_->updatePrice(order->price);
+}
+
+std::string OrderBook::to_string() {
+  std::string buys("Buys");
+  for (auto& buy : buy_) {
+    buys += "\n" + std::to_string(buy->price) + " : " + std::to_string(buy->current_order_quantity);
+  }
+  buys += "\n";
+  std::string sells("Sells");
+  for (auto& sell : sell_) {
+    sells += "\n" + std::to_string(sell->price) + " : " + std::to_string(sell->current_order_quantity);
+  }
+  sells += "\n";
+  return buys + sells;
+}
+
+void OrderBook::matchHelper(std::shared_ptr<Order>& order, std::vector<std::shared_ptr<AggregateOrder>>& book) {
+  int idx = 0;
+  const auto& itr = book.begin();
+  auto end = book.end();
+  while (itr + idx != end && (*(itr + idx))->price >= order->price && order->quantity > 0) {
+    engine_->match(order, *(itr + idx));
+    if ((*(itr + idx))->current_order_quantity == 0) {
+        book.erase(itr + idx++);
+      }
   }
 }
 
-// There should be multiple orders in this string, deliminated by \n
-void OrderBook::parseOrderString(std::vector<std::shared_ptr<Order>>& orders, const std::string& ordersString) {
-  int current_idx = 0, previous_idx = 0;
-  while((current_idx = ordersString.find(' ', previous_idx)) > -1) {
-    std::array<std::string, 4> parsedOutput;
-    parseOrderLine(parsedOutput, ordersString.substr(previous_idx, current_idx - previous_idx));
-    orders.emplace_back(std::make_shared<Order>(std::stof(parsedOutput[2]), std::stof(parsedOutput[3]), std::stoi(parsedOutput[1]), stock_));
-    previous_idx = ++current_idx;
+void OrderBook::match(std::shared_ptr<Order>& order) {
+  if (static_cast<int>(order->side)) {
+    matchHelper(order, buy_);
+  } else {
+    matchHelper(order, sell_);
   }
 }
 
-void OrderBook::parseOrderLine(std::array<std::string, 4>& output, const std::string& orderLine) {
-  int current_idx = 0, previous_idx = 0, idx = 0;
-  // Order String should be in the format of
+// There should be multiple orders in this string
+void OrderBook::parseOrderString(std::array<std::string, 4>& output, const std::string& orderString) {
+  int previous_idx = 0, idx = 0;
   // Stock Side Price Quantity
-  while ((current_idx = orderLine.find(' ', previous_idx)) > -1) {
-    output[idx++] = orderLine.substr(previous_idx, current_idx - previous_idx);
-    previous_idx = ++current_idx;
+  for (int current_idx = 0; current_idx < orderString.length(); current_idx++) {
+    if (orderString[current_idx] == ' ') {
+      output[idx++] = orderString.substr(previous_idx, current_idx - previous_idx);
+      previous_idx = current_idx + 1;
+    }
   }
+  output[idx] = orderString.substr(previous_idx);
 }

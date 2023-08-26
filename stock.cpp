@@ -5,8 +5,7 @@ int Stock::current_id = 0;
 std::map<std::string, std::shared_ptr<Stock>> Stock::stockAbbrvMap;
 
 std::shared_ptr<Stock> Stock::getStockPtr(std::string stock_name, float stock_price, int stock_quantity, time_t update_time) {
-  Stock st = Stock(stock_name, stock_price, stock_quantity, update_time);
-  std::shared_ptr<Stock> stPtr = std::make_shared<Stock>(st);
+  std::shared_ptr<Stock> stPtr = std::make_shared<Stock>(stock_name, stock_price, stock_quantity, update_time);
   Stock::stockAbbrvMap[stock_name.substr(0,3)] = stPtr;
   return stPtr;
 }
@@ -14,12 +13,13 @@ std::shared_ptr<Stock> Stock::getStockPtr(std::string stock_name, float stock_pr
 bool Stock::updatePrice(float new_price) {
   if (difftime(time(0), last_updated) > 0) {
     price_ = new_price;
+    last_updated = time(0);
     return true;
   }
   return false;
 }
 
-std::string Stock::toString() {
+std::string Stock::to_string() {
   return name_ + " " + std::to_string(price_) + " " + ctime(&last_updated_);
 }
 

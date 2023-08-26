@@ -9,10 +9,11 @@ class Exchange {
   public:
     static Exchange& getInstance();
     void processOrderBookAndStockCreationMessage(const std::string& msg);
-    void processOrdersMessage(const std::string& ordersMsg);
+    void processOrderMessage(const std::string& ordersMsg);
     void update();
     static Exchange *exchange;
     int index = 0;
+    std::string to_string();
 
   private:
     static std::map<int, std::shared_ptr<Engine>> intToEngine;

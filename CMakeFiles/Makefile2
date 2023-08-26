@@ -837,12 +837,12 @@ CMakeFiles/ContinuousSubmit.dir/clean:
 CMakeFiles/exchange.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exchange.dir/build.make CMakeFiles/exchange.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ryupark1321/Desktop/Exchange/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target exchange"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ryupark1321/Desktop/Exchange/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target exchange"
 .PHONY : CMakeFiles/exchange.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/exchange.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryupark1321/Desktop/Exchange/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryupark1321/Desktop/Exchange/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/exchange.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryupark1321/Desktop/Exchange/CMakeFiles 0
 .PHONY : CMakeFiles/exchange.dir/rule
