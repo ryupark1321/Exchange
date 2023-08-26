@@ -1,1 +1,0 @@
-/usr/bin/c++  -std=c++2a -Wall -Wpedantic -O3 -rdynamic CMakeFiles/exchange.dir/exchange.cpp.o CMakeFiles/exchange.dir/main.cpp.o CMakeFiles/exchange.dir/engine.cpp.o CMakeFiles/exchange.dir/order.cpp.o CMakeFiles/exchange.dir/orderbook.cpp.o CMakeFiles/exchange.dir/stock.cpp.o -o exchange  -lpthread 
