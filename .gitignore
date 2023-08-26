@@ -396,3 +396,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+*.cmake
+CMakeCache.txt
+DartConfiguration.tcl
+core.*
+CMakeFiles
+.vscode
