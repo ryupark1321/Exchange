@@ -1,1 +1,0 @@
-/usr/bin/c++  -std=c++20 -Wall -Wpedantic -g -rdynamic CMakeFiles/exchange.dir/exchange.cpp.o CMakeFiles/exchange.dir/main.cpp.o CMakeFiles/exchange.dir/order.cpp.o CMakeFiles/exchange.dir/orderbook.cpp.o CMakeFiles/exchange.dir/stock.cpp.o CMakeFiles/exchange.dir/aggregateorder.cpp.o CMakeFiles/exchange.dir/engine.cpp.o -o exchange 
